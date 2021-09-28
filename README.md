@@ -1,6 +1,6 @@
 # Vet clinic Database
 
-> Vet clinic database is a relational database to store animals's informations
+> Vet clinic database is a relational database to store animals's information
 
 ## Getting Started
 
@@ -35,7 +35,7 @@ Give a ⭐️ if you like this project!
 ## 📝 License
 
 This project is [MIT](./MIT.md) licensed.
-Feel free to check the [issues page](../../issues/).
+Feel free to check the [issues page](https://github.com/andersonlebon/vet-clinic/issues).
 
 ## Show your support
 
