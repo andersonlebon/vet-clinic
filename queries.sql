@@ -15,3 +15,48 @@ SELECT * FROM animals WHERE neutered=true;
 SELECT * FROM animals WHERE NOT name='Gabumon';
 
 SELECT * FROM animals WHERE weight_kg BETWEEN 10.4 AND 17.3;
+
+
+-- Begin a transaction to update the spacies column
+
+ BEGIN TRANSACTION;
+ UPDATE animals SET species = 'unspecified';
+
+-- Rollback the transaction
+ ROLLBACK TRANSACTION;
+
+
+-- Begin another transaction
+
+BEGIN TRANSACTION;
+UPDATE animals SET species = 'digimon' WHERE name LIKE '%mon';
+UPDATE animals SET species = 'pokemon' WHERE species IS NULL;
+-- Commit the transaction
+COMMIT TRANSACTION;
+
+-- Delete all recordes in the animals table and rollback the transaction
+BEGIN TRANSACTION;
+DELETE FROM animals;
+-- Rollback the transaction
+ROLLBACK TRANSACTION
+
+-- Delete some recordes in the animals table and commit the transaction
+BEGIN TRANSACTION;
+DELETE FROM animals WHERE date_of_birth > '01-01-2022';
+-- Create a savepioint for the transaction
+SAVEPOINT DELETE_DATE; 
+
+UPDATE animals SET weight_kg = (weight_kg * -1);
+ROLLBACK TO DELETE_DATE;
+UPDATE animals SET weight_kg = (weight_kg * -1) WHERE weight_kg < 0;
+-- Commit the transaction
+COMMIT TRANSACTION;
+
+-- Quering some data
+
+SELECT COUNT(*) FROM animals;
+SELECT COUNT(*) FROM animals WHERE escape_attempts = 0;
+SELECT AVG(weight_kg) FROM animals;
+SELECT neutered, MAX(escape_attempts) FROM animals GROUP BY neutered;
+SELECT neutered, MIN(weight_kg), MAX(weight_kg) from animals GROUP BY neutered;
+SELECT neutered, AVG(escape_attempts) FROM animals  date_of_birth BETWEEN '1990-01-01' AND '2000-12-31' GROUP BY neutered;
