@@ -11,5 +11,5 @@ CREATE TABLE animals (
     PRIMARY KEY(ID)
 );
 
-ALTER TABLE animals ADD species VARCHAR(150);
+ALTER TABLE animals ADD species VARCHAR(100);
 
