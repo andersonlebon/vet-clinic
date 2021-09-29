@@ -8,6 +8,8 @@ CREATE TABLE animals (
     escape_attempts INT NOT NULL,
     neutered BOOLEAN,
     weight_kg DECIMAL NOT NULL,
-    species VARCHAR(50),
     PRIMARY KEY(ID)
 );
+
+ALTER TABLE animals ADD species VARCHAR(150);
+
