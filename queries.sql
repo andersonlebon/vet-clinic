@@ -17,7 +17,7 @@ SELECT * FROM animals WHERE NOT name='Gabumon';
 SELECT * FROM animals WHERE weight_kg BETWEEN 10.4 AND 17.3;
 
 
--- Begin a transaction
+-- Begin a transaction to update the spacies column
 
  BEGIN TRANSACTION;
  UPDATE animals SET species = 'unspecified';
@@ -30,3 +30,7 @@ SELECT * FROM animals WHERE weight_kg BETWEEN 10.4 AND 17.3;
 
 BEGIN TRANSACTION;
 UPDATE animals SET species = 'digimon' WHERE name LIKE '%mon';
+UPDATE animals SET species = 'pokemon' WHERE species IS NULL;
+-- Commit the transaction
+COMMIT TRANSACTION;
+
