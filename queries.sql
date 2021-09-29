@@ -36,6 +36,6 @@ COMMIT TRANSACTION;
 
 -- Delete all recordes in the animals table and rollback the transaction
 BEGIN TRANSACTION;
-DELETE animals;
+DELETE FROM animals;
 -- Rollback the transaction
 ROLLBACK TRANSACTION
