@@ -43,5 +43,11 @@ ROLLBACK TRANSACTION
 -- Delete some recordes in the animals table and commit the transaction
 BEGIN TRANSACTION;
 DELETE FROM animals WHERE date_of_birth > '01-01-2022';
+-- Create a savepioint for the transaction
+SAVEPOINT DELETE_DATE; 
+
+UPDATE animals SET weight_kg = (weight_kg * -1);
+ROLLBACK TO DELETE_DATE;
+UPDATE animals SET weight_kg = (weight_kg * -1) WHERE weight_kg < 0;
 -- Commit the transaction
-COMMIT TRANSACTION
+COMMIT TRANSACTION;
