@@ -39,3 +39,9 @@ BEGIN TRANSACTION;
 DELETE FROM animals;
 -- Rollback the transaction
 ROLLBACK TRANSACTION
+
+-- Delete some recordes in the animals table and commit the transaction
+BEGIN TRANSACTION;
+DELETE FROM animals WHERE date_of_birth > '01-01-2022';
+-- Commit the transaction
+COMMIT TRANSACTION
