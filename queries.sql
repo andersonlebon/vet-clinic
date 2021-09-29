@@ -18,6 +18,15 @@ SELECT * FROM animals WHERE weight_kg BETWEEN 10.4 AND 17.3;
 
 
 -- Begin a transaction
+
  BEGIN TRANSACTION;
  UPDATE animals SET species = 'unspecified';
+
+-- Rollback the transaction
  ROLLBACK TRANSACTION;
+
+
+-- Begin another transaction
+
+BEGIN TRANSACTION;
+UPDATE animals SET species = 'digimon' WHERE name LIKE '%mon';
