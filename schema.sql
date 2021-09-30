@@ -22,3 +22,19 @@ CREATE TABLE owners (
   PRIMARY KEY(id)
 );
 
+-- Create the spacies table 
+
+CREATE TABLE species (
+  id       INT GENERATED ALWAYS AS IDENTITY,
+  name     VARCHAR(100),
+  PRIMARY KEY(id)
+);
+
+ALTER TABLE animals ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY;
+
+-- Remove the spacies column in the animals table
+ALTER TABLE animals DROP species;
+
+
+
+
