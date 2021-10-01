@@ -105,3 +105,9 @@ SELECT animals.name, visits.date_of_visit AS last_visit FROM visits
 SELECT COUNT(DISTINCT visits.animals_id) FROM visits
     INNER JOIN vets ON vets.id = visits.vets_id
     WHERE vets.name = 'Stephanie Mendez';
+
+--  List all vets and their specialties, including vets with no specialties.
+SELECT vets.name, species.name FROM vets 
+    LEFT JOIN specialization ON specialization.vets_id = vets.id
+    LEFT JOIN species ON species.id = specialization.species_id;
+
