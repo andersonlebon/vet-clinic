@@ -46,5 +46,19 @@ COMMIT TRANSACTION;
 
 BEGIN TRANSACTION;
 INSERT INTO vets (name, age, date_of_graduation) 
-  VALUES ('William Tatcher',  45, '2000-04-23'), ('Maisy Smith', 26, '2019-01-17'), ('Stephanie Mendez', 64, '1981-05-04'), ('Jack Harkness', 38, '2008-06-08');
+  VALUES ('William Tatcher',  45, '2000-04-23'), 
+  ('Maisy Smith', 26, '2019-01-17'),
+  ('Stephanie Mendez', 64, '1981-05-04'),
+  ('Jack Harkness', 38, '2008-06-08');
+COMMIT TRANSACTION;
+
+--  Insert infos in the specialization table
+
+BEGIN TRANSACTION;
+INSERT INTO specialization (vets_id, species_id) 
+ VALUES 
+    (1, 1),
+    (3, 2),
+    (3, 1),
+    (4, 2);
 COMMIT TRANSACTION;
