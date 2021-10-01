@@ -55,7 +55,7 @@ COMMIT TRANSACTION;
 --  Insert infos in the specialization table
 
 BEGIN TRANSACTION;
-INSERT INTO specialization (vets_id, species_id) 
+INSERT INTO specialization (vet_id, species_id) 
  VALUES 
     (1, 1),
     (3, 2),
@@ -64,9 +64,8 @@ INSERT INTO specialization (vets_id, species_id)
 COMMIT TRANSACTION;
 
 -- Insert information in the visits table
-
 BEGIN TRANSACTION;
-INSERT INTO visits (animals_id, vets_id, date_of_visit) 
+INSERT INTO visits (animal_id, vet_id, date_of_visit) 
   VALUES
     (1, 1, '2020-05-24'),
     (1, 3, '2020-04-22'),

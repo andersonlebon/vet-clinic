@@ -30,8 +30,6 @@ CREATE TABLE species (
   PRIMARY KEY(id)
 );
 
-ALTER TABLE animals ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY;
-
 -- Remove the spacies column in the animals table
 ALTER TABLE animals DROP species;
 
@@ -59,7 +57,7 @@ CREATE TABLE vets (
 
 CREATE TABLE specialization (
     species_id  INT,
-    vets_id     INT,
+    vet_id     INT,
     FOREIGN KEY (species_id) REFERENCES species (id),
     FOREIGN KEY (vets_id) REFERENCES vets (id),
     PRIMARY KEY (species_id, vets_id)
@@ -70,7 +68,7 @@ CREATE TABLE specialization (
 CREATE TABLE visits (
     vet_id     INT,
     animal_id  INT,
-    visited    DATE,
+    date_of_visit    DATE,
     FOREIGN KEY(vet_id) REFERENCES vets(id),
     FOREIGN KEY(animal_id) REFERENCES animals(id)
 );
