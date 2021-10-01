@@ -91,4 +91,14 @@ SELECT animals.name, animals.escape_attempts FROM animals INNER JOIN owners ON o
 
 --  Who owns the most animals?
 SELECT owners.full_name, COUNT(animals.owner_id) FROM animals FULL OUTER JOIN owners ON animals.owner_id = owners.id
-    GROUP BY owners.id; 
+  GROUP BY owners.id; 
+
+-- Who was the last animal seen by William Tatcher?
+
+SELECT animals.name, visits.date_of_visit AS last_visit FROM visits
+    INNER JOIN vets ON vets.id = visits.vets_id
+    INNER JOIN animals ON animals.id = visits.animals_id
+    WHERE vets.name = 'William Tatcher'
+    GROUP BY animals.name, visits.date_of_visit
+    ORDER BY last_visit DESC LIMIT 1;
+
