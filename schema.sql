@@ -59,8 +59,8 @@ CREATE TABLE specialization (
     species_id  INT,
     vet_id     INT,
     FOREIGN KEY (species_id) REFERENCES species (id),
-    FOREIGN KEY (vets_id) REFERENCES vets (id),
-    PRIMARY KEY (species_id, vets_id)
+    FOREIGN KEY (vet_id) REFERENCES vets (id),
+    PRIMARY KEY (species_id, vet_id)
 );
 
 -- Create the visits table
