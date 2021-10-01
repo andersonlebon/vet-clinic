@@ -139,3 +139,18 @@ SELECT * FROM visits
     INNER JOIN animals ON animals.id = visits.animals_id
     ORDER BY visits.date_of_visit DESC LIMIT 1;
 
+--  How many visits were with a vet that did not specialize in that animal's species?
+SELECT COUNT(visits.animals_id) FROM visits
+    INNER JOIN vets ON vets.id = visits.vets_id
+    INNER JOIN animals ON animals.id = visits.animals_id
+    INNER JOIN specialization ON specialization.vets_id = vets.id
+    WHERE specialization.species_id <> animals.species_id;
+
+-- What specialty should Maisy Smith consider getting? Look for the species she gets the most 
+SELECT species.name, COUNT(visits.animals_id) AS species_count FROM visits
+    INNER JOIN vets ON vets.id = visits.vets_id
+    INNER JOIN animals ON animals.id = visits.animals_id
+    INNER JOIN species ON species.id = animals.species_id
+    WHERE vets.name = 'Maisy Smith'
+    GROUP BY species.name
+    ORDER BY species_count DESC LIMIT 1;
